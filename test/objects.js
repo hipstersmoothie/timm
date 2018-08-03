@@ -398,6 +398,12 @@ test('mergeDeep: should overwrite functions', t => {
   t.is(obj.fn(), 'second');
 });
 
+test('mergeDeep: expects at least one object', t => {
+  const error = t.throws(() => {
+		timm.mergeDeep();
+	}, Error);
+});
+
 test('merge: should preserve unmodified Symbols', t => {
   const obj2 = timm.merge(OBJ, { foo: 'bar' });
   t.is(obj2[SYMBOL], OBJ[SYMBOL]);
